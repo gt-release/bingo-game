@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neo Bingo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">グラフィック強化版</p>
+        <h1>Neo Bingo</h1>
+        <p class="subtitle">ローカルで動くビンゴゲーム。現代的なUIとアニメーションで盛り上がろう。</p>
+        <div class="cta-group">
+          <button id="new-game" class="btn primary">新しいカードを作る</button>
+          <button id="draw-number" class="btn ghost" aria-live="polite">番号を引く</button>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="dot"></span>
+        リアルタイム抽選
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel board-panel" aria-label="ビンゴカード">
+        <div class="panel-header">
+          <div>
+            <p class="section-eyebrow">あなたのカード</p>
+            <h2>BINGO</h2>
+          </div>
+          <div class="status" id="win-status" aria-live="assertive" role="status">待機中</div>
+        </div>
+        <div id="board" class="board" role="grid" aria-label="ビンゴボード"></div>
+      </section>
+
+      <section class="panel control-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-eyebrow">抽選</p>
+            <h2>Callouts</h2>
+          </div>
+          <div class="pill" id="last-called">--</div>
+        </div>
+
+        <div class="callout">
+          <p class="callout-label">次の番号を引いてください</p>
+          <div class="callout-action">
+            <button id="auto-play" class="btn subtle">オート再生</button>
+            <span class="hint">1.5秒間隔で自動抽選</span>
+          </div>
+        </div>
+
+        <div class="list">
+          <div class="list-header">
+            <span>これまでの番号</span>
+            <button id="reset-called" class="btn link">リセット</button>
+          </div>
+          <div id="called-container" class="called-container" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">ビンゴ達成！</div>
+
+  <script src="gameLogic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
